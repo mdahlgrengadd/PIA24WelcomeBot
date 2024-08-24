@@ -1,4 +1,5 @@
 import discord
+from dotenv import load_dotenv
 from discord.ext import commands
 import json
 import os
@@ -6,7 +7,8 @@ import os
 # Get configuration.json
 with open("configuration.json", "r") as config: 
 	data = json.load(config)
-	token = data["token"]
+	load_dotenv()
+	token = os.getenv('DISCORD_TOKEN') #data["token"]
 	prefix = data["prefix"]
 	owner_id = data["owner_id"]
 
@@ -18,6 +20,7 @@ class Greetings(commands.Cog):
 
 # Intents
 intents = discord.Intents.default()
+intents.message_content = True
 # The bot
 bot = commands.Bot(prefix, intents = intents, owner_id = owner_id)
 
