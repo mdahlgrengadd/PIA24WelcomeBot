@@ -1,7 +1,6 @@
 import discord
 from dotenv import load_dotenv
 from discord.ext import commands
-from image_response import generate_image
 import json
 import os
 
@@ -47,12 +46,5 @@ async def on_member_join(member):
 @bot.command()
 async def hello(ctx):
     await ctx.send(f'Hej, {ctx.author.name}!')
-
-# Generera en bild med hjälp av stable diffusion
-@bot.command()
-async def generate(ctx):
-	# Tar för mkt datorkraft
-	#await generate_image(ctx)
-	return
 
 bot.run(token)
